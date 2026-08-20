@@ -10,6 +10,7 @@ body{margin:0;font-family:Arial,sans-serif;background:#f8f9ff}
 .page.active{display:block}
 .header{background:linear-gradient(90deg,#00b894,#0984e3);color:white;padding:35px 20px;text-align:center}
 .card{max-width:700px;margin:20px auto;background:white;padding:25px;border-radius:15px;box-shadow:0 4px 12px rgba(0,0,0,0.1)}
+.require{max-width:700px;margin:15px auto;background:#fff3cd;border:2px solid #ffc107;padding:15px;border-radius:12px;text-align:center;font-weight:bold}
 .service{display:flex;gap:12px;margin:12px 0;background:#f1f2f6;padding:12px;border-radius:10px}
 .btn{display:block;text-align:center;background:#0984e3;color:white;padding:16px;border-radius:30px;text-decoration:none;font-size:19px;font-weight:bold;margin-top:20px;border:none;width:100%;cursor:pointer}
 .btn-green{background:#25D366}
@@ -20,68 +21,67 @@ input,select{width:100%;padding:13px;margin:8px 0;border:1px solid #ddd;border-r
 </head>
 <body>
 
-<!-- PAGE 1 -->
 <div id="page1" class="page active">
 <div class="header">
 <h1>Join Our <span class="c1">Youth Empowerment</span> Program</h1>
 <p>Learn <span class="c2">digital skills</span> where you market real products and <span class="c3">get paid</span></p>
 </div>
 <div class="progress">Page 1 of 3</div>
+
+<div class="require">⚠️ REQUIREMENT: You must have a SMARTPHONE + INTERNET CONNECTION to join this program</div>
+
 <div class="card">
 <h2>What We Do</h2>
+<p>We help youth earn by doing real digital jobs for real businesses.</p>
 <div class="service"><span>🎬</span><div><b>TikTok Videos</b><br>Create viral content for brands</div></div>
 <div class="service"><span>📸</span><div><b>Product Photographs</b><br>Clean photos for shops</div></div>
 <div class="service"><span>📱</span><div><b>Social Media Management</b><br>Manage pages & customers</div></div>
-<div class="service"><span>✂️</span><div><b>Short Video Editing</b><br>Reels, Shorts, TikTok with CapCut</div></div>
+<div class="service"><span>✂️</span><div><b>Short Video Editing</b><br>Reels, Shorts, TikTok editing</div></div>
 <button class="btn" onclick="goPage(2)">Continue →</button>
 </div>
 </div>
 
-<!-- PAGE 2 -->
 <div id="page2" class="page">
-<div class="header">
-<h1>Join Our Community</h1>
-<p>Fill this to continue</p>
-</div>
+<div class="header"><h1>Join Our Community</h1><p>Fill this to continue</p></div>
 <div class="progress">Page 2 of 3 — <a onclick="goPage(1)" style="color:#0984e3;text-decoration:underline;cursor:pointer">Back</a></div>
 <div class="card">
 <h2>Your Details</h2>
-<label>Full Name</label>
-<input id="name" placeholder="e.g. Kevin Otieno">
-<label>Phone Number</label>
-<input id="phone" placeholder="07...">
-<label>Age</label>
-<input id="age" type="number" placeholder="e.g. 22">
-<label>Gender</label>
-<select id="gender"><option>Select</option><option>Male</option><option>Female</option></select>
+<label>Full Name *</label><input id="name" placeholder="e.g. Kevin Otieno">
+<label>Phone Number *</label><input id="phone" placeholder="07..." type="tel">
+<label>Age *</label><input id="age" type="number" placeholder="e.g. 22">
+<label>Gender *</label><select id="gender"><option>Select</option><option>Male</option><option>Female</option></select>
 <button class="btn" onclick="goPage(3)">Continue to Page 3 →</button>
 </div>
 </div>
 
-<!-- PAGE 3 -->
 <div id="page3" class="page">
-<div class="header">
-<h1>Ready to Start? 🚀</h1>
-<p>Chat with us on WhatsApp</p>
-</div>
+<div class="header"><h1>Ready to Start? 🚀</h1><p>Chat with us on WhatsApp</p></div>
 <div class="progress">Page 3 of 3 — <a onclick="goPage(2)" style="color:#0984e3;text-decoration:underline;cursor:pointer">Back</a></div>
 <div class="card">
 <h2>If ready, click below</h2>
-<p>We will add you to the training group.</p>
 <p><b>Name:</b> <span id="showName">-</span></p>
 <button class="btn btn-green" onclick="sendWhatsApp()">💬 Continue to WhatsApp Chat</button>
-<p style="text-align:center;margin-top:15px;color:#888;font-size:13px">kenyan, youths programme| Free to Join</p>
+<p style="text-align:center;margin-top:15px;color:#888;font-size:13px">Nairobi, Kenya | Free to Join</p>
 <button class="btn" style="background:#636e72" onclick="goPage(1)">← Start Again</button>
 </div>
 </div>
 
 <script>
 function goPage(num){
+ if(num==3){
+   let n=document.getElementById('name').value.trim();
+   let p=document.getElementById('phone').value.trim();
+   let a=document.getElementById('age').value.trim();
+   let g=document.getElementById('gender').value;
+   if(n==""){alert("Please enter your Full Name to continue");return;}
+   if(p==""){alert("Please enter your Phone Number to continue");return;}
+   if(p.length < 10){alert("Please enter valid Phone Number (10 digits)");return;}
+   if(a==""){alert("Please enter your Age to continue");return;}
+   if(g=="Select" || g==""){alert("Please select Gender to continue");return;}
+   document.getElementById('showName').innerText=n;
+ }
  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
  document.getElementById('page'+num).classList.add('active');
- if(num==3){
-   document.getElementById('showName').innerText=document.getElementById('name').value || 'Youth Member';
- }
  window.scrollTo(0,0);
 }
 function sendWhatsApp(){
@@ -90,9 +90,8 @@ function sendWhatsApp(){
  let a=document.getElementById('age').value;
  let g=document.getElementById('gender').value;
  let msg=`Hello, I want to join Youth Program%0AName: ${n}%0APhone: ${p}%0AAge: ${a}%0AGender: ${g}`;
- window.open(`https://wa.me/0702486287?text=${msg}`,'_blank');
+ window.open(`https://wa.me/254702486287?text=${msg}`,'_blank');
 }
 </script>
-
 </body>
 </html>
