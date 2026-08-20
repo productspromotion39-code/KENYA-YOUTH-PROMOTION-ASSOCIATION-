@@ -3,75 +3,87 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kenya Youth Empowerment - Digital Skills</title>
+<title>Kenya Youth Empowerment</title>
 <style>
-body{margin:0;font-family:Arial,sans-serif;background:#f8f9ff;color:#222}
-.header{background:linear-gradient(90deg,#00b894,#0984e3);color:white;padding:40px 20px;text-align:center}
-.header h1{font-size:28px;margin:0}
-.header p{font-size:18px;margin-top:10px}
-.color1{color:#fdcb6e;font-weight:bold}
-.color2{color:#e17055;font-weight:bold}
-.color3{color:#00cec9;font-weight:bold}
+body{margin:0;font-family:Arial,sans-serif;background:#f8f9ff}
+.page{display:none;min-height:100vh}
+.page.active{display:block}
+.header{background:linear-gradient(90deg,#00b894,#0984e3);color:white;padding:35px 20px;text-align:center}
 .card{max-width:700px;margin:20px auto;background:white;padding:25px;border-radius:15px;box-shadow:0 4px 12px rgba(0,0,0,0.1)}
-.card h2{color:#0984e3}
 .service{display:flex;gap:12px;margin:12px 0;background:#f1f2f6;padding:12px;border-radius:10px}
-.service span{font-size:26px}
-.btn{display:block;text-align:center;background:#25D366;color:white;padding:16px;border-radius:30px;text-decoration:none;font-size:19px;font-weight:bold;margin-top:20px}
+.btn{display:block;text-align:center;background:#0984e3;color:white;padding:16px;border-radius:30px;text-decoration:none;font-size:19px;font-weight:bold;margin-top:20px;border:none;width:100%;cursor:pointer}
+.btn-green{background:#25D366}
 input,select{width:100%;padding:13px;margin:8px 0;border:1px solid #ddd;border-radius:8px;box-sizing:border-box}
-label{font-weight:bold;font-size:14px}
-.footer{text-align:center;padding:20px;color:#636e72;font-size:13px}
+.progress{text-align:center;padding:10px;color:#636e72;font-size:14px}
+.c1{color:#fdcb6e} .c2{color:#e17055} .c3{color:#00cec9}
 </style>
 </head>
 <body>
 
+<!-- PAGE 1 -->
+<div id="page1" class="page active">
 <div class="header">
-<h1>Join Our <span class="color1">Youth Empowerment</span> Program</h1>
-<p>Learn <span class="color2">digital skills</span> where you will market real products and <span class="color3">get paid</span> for real skills</p>
+<h1>Join Our <span class="c1">Youth Empowerment</span> Program</h1>
+<p>Learn <span class="c2">digital skills</span> where you market real products and <span class="c3">get paid</span></p>
+</div>
+<div class="progress">Page 1 of 3</div>
+<div class="card">
+<h2>What We Do</h2>
+<div class="service"><span>🎬</span><div><b>TikTok Videos</b><br>Create viral content for brands</div></div>
+<div class="service"><span>📸</span><div><b>Product Photographs</b><br>Clean photos for shops</div></div>
+<div class="service"><span>📱</span><div><b>Social Media Management</b><br>Manage pages & customers</div></div>
+<div class="service"><span>✂️</span><div><b>Short Video Editing</b><br>Reels, Shorts, TikTok with CapCut</div></div>
+<button class="btn" onclick="goPage(2)">Continue →</button>
+</div>
 </div>
 
-<div class="card">
-<h2>Page 1 - What We Do</h2>
-<p>We are a community of Kenyan youth helping small businesses grow online. You will learn and earn through practical digital services.</p>
-
-<div class="service"><span>🎬</span><div><b>TikTok Videos</b><br>Create viral TikTok content for brands</div></div>
-<div class="service"><span>📸</span><div><b>Product Photographs</b><br>Clean, attractive photos for shops & Instagram</div></div>
-<div class="service"><span>📱</span><div><b>Social Media Management</b><br>Manage pages, post, reply to customers</div></div>
-<div class="service"><span>✂️</span><div><b>Short Form Video Editing</b><br>Reels, Shorts, TikTok editing with CapCut</div></div>
-<div class="service"><span>💡</span><div><b>And Others</b><br>Posters, logos, writing, and more!</div></div>
-
-<h3 style="color:#00b894">What you have to do is to register and join community</h3>
+<!-- PAGE 2 -->
+<div id="page2" class="page">
+<div class="header">
+<h1>Join Our Community</h1>
+<p>Fill this to continue</p>
 </div>
-
+<div class="progress">Page 2 of 3 — <a onclick="goPage(1)" style="color:#0984e3;text-decoration:underline;cursor:pointer">Back</a></div>
 <div class="card">
-<h2>Page 2 - Join Community</h2>
-<p>Fill this interest form — we will reach you on WhatsApp</p>
-
+<h2>Your Details</h2>
 <label>Full Name</label>
 <input id="name" placeholder="e.g. Kevin Otieno">
-
 <label>Phone Number</label>
 <input id="phone" placeholder="07...">
-
 <label>Age</label>
 <input id="age" type="number" placeholder="e.g. 22">
-
 <label>Gender</label>
-<select id="gender"><option>Select</option><option>Male</option><option>Female</option><option>Prefer not to say</option></select>
-
-<a class="btn" onclick="sendWhatsApp()">Continue to WhatsApp →</a>
-<p style="font-size:12px;color:#888">We respect your privacy. Your info is only used to contact you about this program. No payment required.</p>
+<select id="gender"><option>Select</option><option>Male</option><option>Female</option></select>
+<button class="btn" onclick="goPage(3)">Continue to Page 3 →</button>
+</div>
 </div>
 
+<!-- PAGE 3 -->
+<div id="page3" class="page">
+<div class="header">
+<h1>Ready to Start? 🚀</h1>
+<p>Chat with us on WhatsApp</p>
+</div>
+<div class="progress">Page 3 of 3 — <a onclick="goPage(2)" style="color:#0984e3;text-decoration:underline;cursor:pointer">Back</a></div>
 <div class="card">
-<h2>Page 3 - Ready?</h2>
-<p>If ready, DM me on WhatsApp. Click the button below to chat directly.</p>
-<a class="btn" href="https://wa.me/254102486287?text=Hello%20I%20am%20interested%20in%20the%20Youth%20Empowerment%20digital%20skills%20program">💬 Chat on WhatsApp: 0102 486 287</a>
-<p style="margin-top:15px;text-align:center">Nairobi, Kenya | Free to Join | Learn & Earn</p>
+<h2>If ready, click below</h2>
+<p>We will add you to the training group.</p>
+<p><b>Name:</b> <span id="showName">-</span></p>
+<button class="btn btn-green" onclick="sendWhatsApp()">💬 Continue to WhatsApp Chat</button>
+<p style="text-align:center;margin-top:15px;color:#888;font-size:13px">Nairobi, Kenya | Free to Join</p>
+<button class="btn" style="background:#636e72" onclick="goPage(1)">← Start Again</button>
 </div>
-
-<div class="footer">© 2026 Kenya Youth Empowerment • Built with GitHub Pages</div>
+</div>
 
 <script>
+function goPage(num){
+ document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+ document.getElementById('page'+num).classList.add('active');
+ if(num==3){
+   document.getElementById('showName').innerText=document.getElementById('name').value || 'Youth Member';
+ }
+ window.scrollTo(0,0);
+}
 function sendWhatsApp(){
  let n=document.getElementById('name').value;
  let p=document.getElementById('phone').value;
